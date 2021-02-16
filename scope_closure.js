@@ -8,11 +8,15 @@
  * Study the code below for counter1 and counter2. Answer the questions below.
  * 
  * 1. What is the difference between counter1 and counter2?
+//  * counter1 is a parent function that allows the functions to be terminsted or return.
+//  * counter2 is closure that has ability to access the parent level scope to excuted the return.
  * 
  * 2. Which of the two uses a closure? How can you tell?
+ *   I think 
  * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
- *
+//  *  You could delare the count variable in the outer scope if you want it to be referencable elsewhere, 
+//  *  without having to increment the count.
 */
 
 // counter1 code
@@ -41,19 +45,23 @@ function counter2() {
 /* Inside the motivation function create another function called message that
 will return 'You're doing awesome, keep it up firstname lastname.' */
 
-function motivation(firstname, lastname) {
-
-  var welcomeText = 'You\'re doing awesome, keep it up ';
-
-  // code message function here.
-
-
-  //Uncommment this to return the value of your invoked message function
-  //return message();
-
+  let userName = 'Mohamed, Ali'
+function showMessage() {
+  let message = 'You\'re doing awesome, keep it up, ' + userName
+  return message
 }
 
-motivation('Mohamed', 'Ali'); // 'You're doing awesome keep it up Mohamed Ali.
+showMessage();
+
+//   var welcomeText = 'You\'re doing awesome, keep it up ';
+
+
+//   //Uncommment this to return the value of your invoked message function
+//   //return message();
+
+// }
+
+// motivation('Mohamed', 'Ali'); // 'You're doing awesome keep it up Mohamed Ali.
 
 
 /******************************************************************************\
@@ -71,12 +79,20 @@ var secondLevelFriends = ["Mahad", "Farah", "Mohamed"];
 var allUsers = ["Ahmed", "Khadijo", "Farah", "Mahad", "Mohamed", "Bashir", "Ali"];
 
 function findPotentialFriends(existingFriends) {
+  return function(notFriend){
+    for (i = 0; i < existingFriends.length; i++) { 
+      if (existingFriends[i].indexOf(notFriend)>=0) {
+        return false
+      }
+    } return true
+    
+  }
 
 }
 
-var isNotAFriend = findPotentialFriends( friends );
-// isNotAFriend(allUsers[0]); // false
-// isNotAFriend(secondLevelFriends[2]); // true
+var isNotAFriend = findPotentialFriends(secondLevelFriends );
+isNotAFriend(allUsers[0]); // false
+isNotAFriend(secondLevelFriends[2]); // true
 
 
 /******************************************************************************\
@@ -119,7 +135,15 @@ timeOutCounter();
   If it does, invoke the callback with true as the argument. 
   If the name does not exist, invoke the callback with false as the argument.
 */
+const magac = ["Mohamed", "Said", "Ali","Abdirahman"]
+ 
+firstOne = (magacada,cb) => {
+    cb(magacada[0]);
+}
 
+firstOne (magac, (firstname) => {
+  console.log(firstname);
+})
 
 
 /* STRETCH PROBLEMS, Do not attempt until you have completed all previous tasks for today's project files */
